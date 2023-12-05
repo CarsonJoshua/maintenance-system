@@ -6,6 +6,8 @@ public class TenantAccount {
     private String id;
     private TenantData tenantData;
     public TenantAccount(String id, TenantData data) {
+        this.id = id;
+        this.tenantData = data;
     }
 
     public String getId() {
