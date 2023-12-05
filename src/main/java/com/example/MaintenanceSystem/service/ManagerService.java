@@ -30,13 +30,13 @@ public class ManagerService {
         return tenants;
     }
 
-    public Object getTenantById(String tenantId) throws ExecutionException, InterruptedException {
+    public TenantAccount getTenantById(String tenantId) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         DocumentSnapshot doc = db.collection(c)
                 .document(tenantId)
                 .get().get();
         if(doc.exists()){
-            return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequest.MaintenanceRequestData.class));
+            return new TenantAccount(doc.getId(), doc.toObject(TenantAccount.TenantData.class));
         }
         return null;
     }
