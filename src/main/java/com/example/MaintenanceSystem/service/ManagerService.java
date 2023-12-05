@@ -1,5 +1,6 @@
 package com.example.MaintenanceSystem.service;
 
+import com.example.MaintenanceSystem.model.MaintenanceRequest;
 import com.example.MaintenanceSystem.model.TenantAccount;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -27,5 +28,16 @@ public class ManagerService {
             }
         }
         return tenants;
+    }
+
+    public Object getTenantById(String tenantId) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentSnapshot doc = db.collection(c)
+                .document(tenantId)
+                .get().get();
+        if(doc.exists()){
+            return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequest.MaintenanceRequestData.class));
+        }
+        return null;
     }
 }

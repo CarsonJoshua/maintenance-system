@@ -23,10 +23,10 @@ public class ManagerController {
         return "tenant-list";
     }
     @GetMapping("/manager/tenants/account")
-    public String tenantAccountPage(Model model, @RequestParam String tenantId){
+    public String tenantAccountPage(Model model, @RequestParam String tenantId) throws ExecutionException, InterruptedException {
         String errors = managerService.validateFormSubmit(tenantId);
         if(errors==null){
-            model.addAttribute(tenantId);
+            model.addAttribute("tenant", managerService.getTenantById(tenantId));
             return "tenant-account";
         }
         return "redirect:/";
