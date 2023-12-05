@@ -6,13 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.concurrent.ExecutionException;
+
 @Controller
 public class MaintenanceController {
 
     public MaintenanceService maintenanceService;
 
     @GetMapping("/maintenance")
-    public String logPage(Model model){
+    public String logPage(Model model) throws ExecutionException, InterruptedException {
         model.addAttribute("maintenanceRequestList", maintenanceService.getMaintenanceRequests());
         return "maintenance-list";
     }
