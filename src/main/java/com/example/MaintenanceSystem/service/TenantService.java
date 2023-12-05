@@ -30,4 +30,8 @@ public class TenantService {
         }
         return null;
     }
+
+    public String validateFormSubmit(String description, String problemArea) {
+        return null;//TODO
+    }
 }
