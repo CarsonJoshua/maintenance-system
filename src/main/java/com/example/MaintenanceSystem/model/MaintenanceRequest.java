@@ -12,6 +12,18 @@ public class MaintenanceRequest {
     }
 
     public static class MaintenanceRequestData{
+        public MaintenanceRequestData(String apartmentNumber, String description, String problemArea, String status, Timestamp time) {
+            this.apartmentNumber = apartmentNumber;
+            this.description = description;
+            this.problemArea = problemArea;
+            this.status = status;
+            this.time = time;
+        }
+
+        public MaintenanceRequestData(String apartmentNumber, String description, String problemArea, String status) {
+            this(apartmentNumber, description, problemArea, status, Timestamp.now());
+        }
+
         private String apartmentNumber;
         private String description;
         private String problemArea;
