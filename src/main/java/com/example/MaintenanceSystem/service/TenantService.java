@@ -5,9 +5,11 @@ import com.example.MaintenanceSystem.model.TenantAccount;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 
+@Service
 public class TenantService {
     private String tenantId;
     private final String t = "tenants";
