@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.concurrent.ExecutionException;
+
 @Controller
 public class ManagerController {
     public ManagerService managerService;
@@ -16,7 +18,7 @@ public class ManagerController {
     }
 
     @GetMapping("/manager/tenants")
-    public String tenantListPage(Model model){
+    public String tenantListPage(Model model) throws ExecutionException, InterruptedException {
         model.addAttribute("tenantList", managerService.getTenants());
         return "tenant-list";
     }
