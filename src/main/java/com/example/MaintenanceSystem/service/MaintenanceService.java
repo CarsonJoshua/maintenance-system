@@ -29,4 +29,16 @@ public class MaintenanceService {
         }
         return maintenanceRequests;
     }
+
+
+    public MaintenanceRequest getMaintenanceRequestById(String requestId) throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        DocumentSnapshot doc = db.collection(c)
+                .document(requestId)
+                .get().get();
+        if(doc.exists()){
+            return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequest.MaintenanceRequestData.class));
+        }
+        return null;
+    }
 }

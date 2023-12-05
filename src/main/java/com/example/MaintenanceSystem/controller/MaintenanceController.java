@@ -20,10 +20,10 @@ public class MaintenanceController {
     }
 
     @GetMapping("/maintenance/request")
-    public String usersPage(Model model, @RequestParam String requestId){
+    public String usersPage(Model model, @RequestParam String requestId) throws ExecutionException, InterruptedException {
         String errors = maintenanceService.validateFormSubmit(requestId);
         if(errors==null){
-            model.addAttribute(requestId);
+            model.addAttribute("maintenanceRequest", maintenanceService.getMaintenanceRequestById(requestId));
             return "maintenance-request";
         }
         return "redirect:/";
