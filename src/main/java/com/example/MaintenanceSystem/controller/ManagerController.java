@@ -12,6 +12,10 @@ import java.util.concurrent.ExecutionException;
 public class ManagerController {
     public ManagerService managerService;
 
+    public ManagerController(ManagerService managerService) {
+        this.managerService = managerService;
+    }
+
     @GetMapping("/manager")
     public String managerPage(Model model){
         return "manager";

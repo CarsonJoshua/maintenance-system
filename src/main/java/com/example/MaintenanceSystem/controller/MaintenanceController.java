@@ -13,6 +13,10 @@ public class MaintenanceController {
 
     public MaintenanceService maintenanceService;
 
+    public MaintenanceController(MaintenanceService maintenanceService) {
+        this.maintenanceService = maintenanceService;
+    }
+
     @GetMapping("/maintenance")
     public String logPage(Model model) throws ExecutionException, InterruptedException {
         model.addAttribute("maintenanceRequestList", maintenanceService.getMaintenanceRequests());

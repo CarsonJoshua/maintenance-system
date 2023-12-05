@@ -14,6 +14,10 @@ public class TenantController {
     public TenantService tenantService;
     public TenantAccount tenantAccount;
 
+    public TenantController(TenantService tenantService) {
+        this.tenantService = tenantService;
+    }
+
     @GetMapping("/request")
     public String tenantRequestPage(Model model){
         return "make-request";
