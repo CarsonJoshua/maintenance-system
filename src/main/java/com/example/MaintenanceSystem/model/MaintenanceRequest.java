@@ -11,7 +11,7 @@ public class MaintenanceRequest {
         this.maintenanceRequestData = maintenanceRequestData;
     }
 
-    public class MaintenanceRequestData{
+    public static class MaintenanceRequestData{
         private String apartmentNumber;
         private String description;
         private String problemArea;
