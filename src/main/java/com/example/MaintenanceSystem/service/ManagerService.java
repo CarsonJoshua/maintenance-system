@@ -16,7 +16,7 @@ public class ManagerService {
         return null;//TODO
     }
 
-    public List<TenantAccount> getTenants() throws ExecutionException, InterruptedException {
+    public List<TenantAccount> getTenants() throws ExecutionException, InterruptedException {//todo this gets everything, but I really just need the names and ids for listing initially
         Firestore db = FirestoreClient.getFirestore();
         List<TenantAccount> tenants = new ArrayList<>();
         for(DocumentReference tenantDoc : db.collection(c).listDocuments()){
