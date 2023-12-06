@@ -2,10 +2,31 @@
 <html xmlns:th="https://thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
+  <title>Title</title>
 </head>
 <body>
-<h1>Welcome</h1>
+<div>
+  <h4>search</h4>
+  <form method="get" action="/search">
+    <input type="search" name="search">
+    <button type="submit">search</button>
+    <a href="/">Clear</a>
+  </form>
+</div>
+<div>
+  <h4>Maintenance Requests:</h4>
+  <div th:unless="${maintenanceRequestList}">
+    no soup :(
+  </div>
+  <div th:each = "request: ${maintenanceRequestList}">
+    <div th:text="${request.time}"></div>
+    <div th:text="${request.apartmentNumber}"></div>
+    <div th:text="${request.description}"></div>
+    <div th:text="${request.problemArea}"></div>
+    <div th:text="${request.status}"></div>
+    <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete/'+request.id}">Complete</a>
+  </div>
+</div>
 
 </body>
 </html>

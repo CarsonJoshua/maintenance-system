@@ -1,6 +1,7 @@
 package com.example.MaintenanceSystem.controller;
 
 import com.example.MaintenanceSystem.model.MaintenanceRequest;
+import com.example.MaintenanceSystem.model.MaintenanceRequestData;
 import com.example.MaintenanceSystem.model.TenantAccount;
 import com.example.MaintenanceSystem.service.TenantService;
 import org.springframework.security.core.Authentication;
@@ -32,7 +33,7 @@ public class TenantController {
         TenantAccount tenantAccount = tenantService.getTenant(SecurityContextHolder.getContext().getAuthentication().getName());
         if (errors==null){
             model.addAttribute("success", "Database changes saved");
-            tenantService.createMaintenanceRequest(new MaintenanceRequest.MaintenanceRequestData(tenantAccount.getApartmentNumber(), description, problemArea, "pending"));
+            tenantService.createMaintenanceRequest(new MaintenanceRequestData(tenantAccount.getApartmentNumber(), description, problemArea, "pending"));
         }else{
             model.addAttribute("errors", errors);
             model.addAttribute("description", description);

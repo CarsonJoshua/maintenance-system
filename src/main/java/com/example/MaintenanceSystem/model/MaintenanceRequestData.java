@@ -2,29 +2,25 @@ package com.example.MaintenanceSystem.model;
 
 import com.google.cloud.Timestamp;
 
-public class MaintenanceRequest {
-    private String id;
-    private String apartmentNumber;
-    private String description;
-    private String problemArea;
-    private String status;
-    private Timestamp time;
-
-    public MaintenanceRequest(String id, MaintenanceRequestData maintenanceRequestData) {
-        this.id = id;
-        this.apartmentNumber = maintenanceRequestData.apartmentNumber;
-        this.description = maintenanceRequestData.description;
-        this.problemArea = maintenanceRequestData.problemArea;
-        this.status = maintenanceRequestData.status;
-        this.time = maintenanceRequestData.time;
+public class MaintenanceRequestData{
+    protected String apartmentNumber;
+    protected String description;
+    protected String problemArea;
+    protected String status;
+    protected Timestamp time;
+    public MaintenanceRequestData(String apartmentNumber, String description, String problemArea, String status, Timestamp time) {
+        this.apartmentNumber = apartmentNumber;
+        this.description = description;
+        this.problemArea = problemArea;
+        this.status = status;
+        this.time = time;
     }
 
-    public String getId() {
-        return id;
+    public MaintenanceRequestData(String apartmentNumber, String description, String problemArea, String status) {
+        this(apartmentNumber, description, problemArea, status, Timestamp.now());
     }
-
-    public void setId(String id) {
-        this.id = id;
+    public MaintenanceRequestData(){
+        this("0000", "Error loading entry from the database", "Database Error","pending");
     }
 
     public String getApartmentNumber() {

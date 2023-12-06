@@ -23,7 +23,8 @@ public class WebSecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .formLogin(form -> form
-                        .defaultSuccessUrl(determineTargetURL(SecurityContextHolder.getContext().getAuthentication()))
+//                        .defaultSuccessUrl(determineTargetURL(SecurityContextHolder.getContext().getAuthentication()))//TODO this causes an error I don't quite understand yet
+                                .defaultSuccessUrl("/request")
                 )
                 .logout(logout -> logout
                                 .logoutSuccessUrl("/")

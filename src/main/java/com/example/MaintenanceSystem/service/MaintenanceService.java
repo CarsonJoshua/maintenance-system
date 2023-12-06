@@ -1,6 +1,7 @@
 package com.example.MaintenanceSystem.service;
 
 import com.example.MaintenanceSystem.model.MaintenanceRequest;
+import com.example.MaintenanceSystem.model.MaintenanceRequestData;
 import com.example.MaintenanceSystem.model.TenantAccount;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -26,7 +27,7 @@ public class MaintenanceService {
             DocumentSnapshot maintenanceData = maintenanceDoc.get().get();
             if(maintenanceData.exists()){
 //               System.out.println(soup);
-                maintenanceRequests.add(new MaintenanceRequest(maintenanceData.getId(), maintenanceData.toObject(MaintenanceRequest.MaintenanceRequestData.class)));
+                maintenanceRequests.add(new MaintenanceRequest(maintenanceData.getId(), maintenanceData.toObject(MaintenanceRequestData.class)));
             }
         }
         return maintenanceRequests;
@@ -39,7 +40,7 @@ public class MaintenanceService {
                 .document(requestId)
                 .get().get();
         if(doc.exists()){
-            return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequest.MaintenanceRequestData.class));
+            return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequestData.class));
         }
         return null;
     }

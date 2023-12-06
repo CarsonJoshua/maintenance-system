@@ -1,6 +1,7 @@
 package com.example.MaintenanceSystem.service;
 
 import com.example.MaintenanceSystem.model.MaintenanceRequest;
+import com.example.MaintenanceSystem.model.MaintenanceRequestData;
 import com.example.MaintenanceSystem.model.TenantAccount;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
@@ -14,7 +15,7 @@ public class TenantService {
     private final String t = "tenants";
     private final String m = "maintenance-requests";
 
-    public void createMaintenanceRequest(MaintenanceRequest.MaintenanceRequestData maintenanceRequestData){
+    public void createMaintenanceRequest(MaintenanceRequestData maintenanceRequestData){
         Firestore db = FirestoreClient.getFirestore();
         db.collection(m).document().set(maintenanceRequestData);
     }
