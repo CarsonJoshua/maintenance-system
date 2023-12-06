@@ -4,12 +4,13 @@ import com.example.MaintenanceSystem.model.MaintenanceRequest;
 import com.example.MaintenanceSystem.model.MaintenanceRequestData;
 import com.example.MaintenanceSystem.model.TenantAccount;
 import com.example.MaintenanceSystem.service.TenantService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.concurrent.ExecutionException;
@@ -28,9 +29,11 @@ public class TenantController {
         return "make-request";
     }
     @PostMapping("/request/create")
-    public String createRequestPage(Model model, @RequestParam String description, String problemArea) throws ExecutionException, InterruptedException {
+    public String createRequestPage(Model model, @RequestParam String description, @RequestParam String problemArea) throws ExecutionException, InterruptedException {
         String errors = tenantService.validateFormSubmit(description, problemArea);
-        TenantAccount tenantAccount = tenantService.getTenant(SecurityContextHolder.getContext().getAuthentication().getName());
+//        TenantAccount tenantAccount = tenantService.getTenant(SecurityContextHolder.getContext().getAuthentication().getName());
+        TenantAccount tenantAccount = tenantService.getTenant("DURI6qZTaFNqZpyINBCY");
+
         if (errors==null){
             model.addAttribute("success", "Database changes saved");
             tenantService.createMaintenanceRequest(new MaintenanceRequestData(tenantAccount.getApartmentNumber(), description, problemArea, "pending"));
