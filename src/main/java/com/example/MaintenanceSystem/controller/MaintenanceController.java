@@ -26,7 +26,7 @@ public class MaintenanceController {
     @GetMapping("/maintenance/complete")
     public String completeRequest(Model model, @RequestParam String id){
         maintenanceService.completeRequest(id);
-        return "redirect:/";
+        return "redirect:/maintenance";
     }
 
 //    @GetMapping("/maintenance/request")
