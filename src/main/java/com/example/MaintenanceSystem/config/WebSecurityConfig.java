@@ -14,8 +14,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.List;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig{
 
 
@@ -71,6 +71,6 @@ public class WebSecurityConfig{
 //                        .build(),
 //        };
 //        return new InMemoryUserDetailsManager(users);
-//    }//TODO multiple users
+//    }
 
 }
