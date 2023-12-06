@@ -18,14 +18,34 @@
   <div th:unless="${maintenanceRequestList}">
     no soup :(
   </div>
-  <div th:each = "request: ${maintenanceRequestList}">
-    <div th:text="${request.time}"></div>
-    <div th:text="${request.apartmentNumber}"></div>
-    <div th:text="${request.description}"></div>
-    <div th:text="${request.problemArea}"></div>
-    <div th:text="${request.status}"></div>
-    <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete/'+request.id}">Complete</a>
-  </div>
+  <table>
+    <tr>
+      <th>Time</th>
+      <th>Apt #</th>
+      <th>Desc</th>
+      <th>Problem Area</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    <tr th:each = "request: ${maintenanceRequestList}">
+      <td th:text="${request.time}"></td>
+      <td th:text="${request.apartmentNumber}"></td>
+      <td th:text="${request.description}"></td>
+      <td th:text="${request.problemArea}"></td>
+      <td th:text="${request.status}"></td>
+      <td>
+        <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete/'+request.id}">Complete</a>
+      </td>
+    </tr>
+  </table>
+<!--  <div th:each = "request: ${maintenanceRequestList}">-->
+<!--    <div th:text="${request.time}"></div>-->
+<!--    <div th:text="${request.apartmentNumber}"></div>-->
+<!--    <div th:text="${request.description}"></div>-->
+<!--    <div th:text="${request.problemArea}"></div>-->
+<!--    <div th:text="${request.status}"></div>-->
+<!--    <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete/'+request.id}">Complete</a>-->
+<!--  </div>-->
 </div>
 
 </body>
