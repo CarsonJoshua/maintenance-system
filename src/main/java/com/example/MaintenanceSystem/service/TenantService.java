@@ -11,18 +11,14 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class TenantService {
-    private String tenantId;
     private final String t = "tenants";
     private final String m = "maintenance-requests";
 
-    public TenantService(String tenantId) {
-        this.tenantId = tenantId;
-    }
     public void createMaintenanceRequest(MaintenanceRequest.MaintenanceRequestData maintenanceRequestData){
         Firestore db = FirestoreClient.getFirestore();
         db.collection(m).document().set(maintenanceRequestData);
     }
-    public TenantAccount getTenant() throws ExecutionException, InterruptedException {
+    public TenantAccount getTenant(String tenantId) throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
         DocumentSnapshot doc = db.collection(t)
                 .document(tenantId)
