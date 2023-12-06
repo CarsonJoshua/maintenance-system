@@ -34,7 +34,7 @@
       <td th:text="${request.problemArea}"></td>
       <td th:text="${request.status}"></td>
       <td>
-        <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete/'+request.id}">Complete</a>
+        <a th:if="${request.status=='pending'}" type="button" th:href="${'/maintenance/complete?id='+request.id}">Complete</a>
       </td>
     </tr>
   </table>

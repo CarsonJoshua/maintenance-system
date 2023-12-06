@@ -10,7 +10,9 @@ import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -43,5 +45,12 @@ public class MaintenanceService {
             return new MaintenanceRequest(doc.getId(), doc.toObject(MaintenanceRequestData.class));
         }
         return null;
+    }
+
+    public void completeRequest(String id) {
+        Firestore db = FirestoreClient.getFirestore();
+        Map<String, Object> map = new HashMap<>();
+        map.put("status", "completed");
+        db.collection(c).document(id).update(map);
     }
 }
