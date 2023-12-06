@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Make maintenance request</h1>
-<form action="/request/create" method="post">
+<form th:action="@{/request/create}" method="post">
   <label for="description">Description</label>
   <input type="text" id="description" name="description" th:value="${description}">
   <label for="problemArea">Problem Area</label>

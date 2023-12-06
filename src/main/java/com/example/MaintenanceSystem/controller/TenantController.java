@@ -32,7 +32,7 @@ public class TenantController {
     public String createRequestPage(Model model, @RequestParam String description, @RequestParam String problemArea) throws ExecutionException, InterruptedException {
         String errors = tenantService.validateFormSubmit(description, problemArea);
 //        TenantAccount tenantAccount = tenantService.getTenant(SecurityContextHolder.getContext().getAuthentication().getName());
-        TenantAccount tenantAccount = tenantService.getTenant("DURI6qZTaFNqZpyINBCY");
+        TenantAccount tenantAccount = tenantService.getTenant("TiUfMtGXd6POS1ZQJK96");
 
         if (errors==null){
             model.addAttribute("success", "Database changes saved");
@@ -42,6 +42,6 @@ public class TenantController {
             model.addAttribute("description", description);
             model.addAttribute("problemArea", problemArea);
         }
-        return "redirect:/";
+        return "redirect:/request";
     }
 }

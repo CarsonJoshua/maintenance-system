@@ -3,6 +3,7 @@ package com.example.MaintenanceSystem.service;
 import com.example.MaintenanceSystem.model.MaintenanceRequest;
 import com.example.MaintenanceSystem.model.MaintenanceRequestData;
 import com.example.MaintenanceSystem.model.TenantAccount;
+import com.example.MaintenanceSystem.model.TenantData;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;
@@ -25,7 +26,8 @@ public class TenantService {
                 .document(tenantId)
                 .get().get();
         if(doc.exists()){
-            return new TenantAccount(doc.getId(), doc.toObject(TenantAccount.TenantData.class));
+//            System.out.println(doc);
+            return new TenantAccount(doc.getId(), doc.toObject(TenantData.class));
         }
         return null;
     }
